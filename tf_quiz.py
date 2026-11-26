@@ -20,6 +20,7 @@ import random
 from pathlib import Path
 
 import streamlit as st
+from streamlit_theme import st_theme
 
 
 # Drop a file path or a URL into any of these. Empty means no picture.
@@ -31,8 +32,26 @@ WELLDONE_IMAGE = "img/kevproud.png"
 
 CSV_PATH = Path(__file__).resolve().parent / "csv" / "tf_questions.csv"
 
-COLOUR_CORRECT = "#4C5D24"
-COLOUR_INCORRECT = "#621E1A"
+COLOURS = {
+    "light": {
+        "correct": "#DCE8C5",
+        "correct_button": "#B8CB91",
+        "correct_hover": "#A4BA78",
+        "incorrect": "#F5D0CD",
+        "incorrect_button": "#E5ABA6",
+        "incorrect_hover": "#D9958F",
+        "text": "#262730",
+    },
+    "dark": {
+        "correct": "#4C5D24",
+        "correct_button": "#354218",
+        "correct_hover": "#283310",
+        "incorrect": "#621E1A",
+        "incorrect_button": "#481310",
+        "incorrect_hover": "#350D0B",
+        "text": "#FAFAFA",
+    },
+}
 
 def load_bank(path: Path) -> list[dict]:
     """Read statements that actually have a T or F verdict."""
@@ -74,13 +93,24 @@ def show_image(reference: str) -> None:
     if path.is_file():
         st.image(str(path), width=200)
 
+def fetch_theme() -> None:
+    """Retrieve and store the current browser theme."""
+    theme = st_theme(key="quiz_theme")
 
-def paint(colour: str) -> None:
-    """Wash the page. Streamlit redraws from the top on every click.
+    if theme and theme.get("base") in COLOURS:
+        st.session_state.theme_base = theme["base"]
 
-    The text colour is pinned to a dark ink. A dark theme would otherwise
-    leave pale type on a pale wash, and the verdict would be hard to read.
-    """
+def paint(right: bool) -> None:
+    """Apply the feedback background and button styling."""
+    base = st.session_state.get("theme_base", "light")
+    palette = COLOURS[base]
+    verdict = "correct" if right else "incorrect"
+
+    colour = palette[verdict]
+    button = palette[f"{verdict}_button"]
+    hover = palette[f"{verdict}_hover"]
+    text = palette["text"]
+
     st.markdown(
         f"""
         <style>
@@ -89,10 +119,35 @@ def paint(colour: str) -> None:
         [data-testid="stToolbar"] {{
             background-color: {colour};
         }}
-        /* The theme's own colour rules are more specific, so this has to win. */
-        .stApp h1, .stApp h2, .stApp h3,
-        .stApp p, .stApp li, .stApp span, .stApp label,
-        .stApp [data-testid="stMarkdownContainer"] * {{
+
+        .stButton button {{
+            background-color: {button};
+            color: {text};
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.15s ease,
+                        transform 0.15s ease;
+        }}
+
+        .stButton button p {{
+            color: {text};
+        }}
+
+        .stButton button:hover {{
+            background-color: {hover};
+            color: {text};
+            border-color: transparent;
+            transform: translateY(-2px);
+        }}
+
+        .stButton button:active {{
+            transform: translateY(0);
+        }}
+
+        .stButton button:focus-visible {{
+            outline: 2px solid {text};
+            outline-offset: 3px;
         }}
         </style>
         """,
@@ -130,6 +185,7 @@ def advance() -> None:
 
 
 def render_setup(total: int) -> None:
+    # fetch_theme()
     st.title("Plate-SLICcers")
     st.write(
         f"somebody get these BEGGARS outta here"
@@ -156,6 +212,7 @@ def render_setup(total: int) -> None:
 
 
 def render_question() -> None:
+    # fetch_theme()
     deck = st.session_state.deck
     index = st.session_state.index
     card = deck[index]
@@ -192,7 +249,7 @@ def render_feedback() -> None:
     said = "True" if st.session_state.last_choice else "False"
     answer = "True" if card["answer"] else "False"
 
-    paint(COLOUR_CORRECT if right else COLOUR_INCORRECT)
+    paint(right)
 
     st.title("Correct." if right else "Wrong.")
     st.markdown(
@@ -244,6 +301,8 @@ def render_results() -> None:
 def main() -> None:
     st.set_page_config(page_title="Plate-SLICcers", page_icon="§", layout="centered")
     
+    fetch_theme()
+
     if "bank" not in st.session_state:
         st.session_state.bank = load_bank(CSV_PATH)
         st.session_state.phase = "setup"
