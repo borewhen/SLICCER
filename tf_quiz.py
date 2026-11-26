@@ -139,7 +139,7 @@ def render_setup(total: int) -> None:
     st.image("img/beggars.png", width=200)
 
     count = st.number_input(
-        "How many questions do we wanna try?",
+        "How many questions do we wanna try? We have 190 true/false questions in the bank.",
         min_value=1,
         max_value=total,
         value=min(10, total),
