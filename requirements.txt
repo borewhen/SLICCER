@@ -1,4 +1,3 @@
 zstandard>=0.22
 streamlit>=1.32
-streamlit-theme
-st-theme
+streamlit_theme
