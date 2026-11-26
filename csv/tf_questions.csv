@@ -6,7 +6,7 @@
 5,Inquiry Committee is appointed by the CJ,T,T,,Y
 6,Jury system was imported via 2nd Charter,T,T,,Y
 7,Singapore abolished jury system in 1970,T (1969 bill),T,1969 bill,Y
-8,There are always 7 jurors,F (6-7),F,6-Jul,Y
+8,There are always 7 jurors,F (6-7),F,6-7,Y
 9,Civil law does not have jury trial,T,T,,Y
 10,Singapore restricted jury trial to only capital offences after 1960,T (yang di-pertuan nagara can ask to use jury trial for special cases where crimes are sufficiently serious),T,yang di-pertuan nagara can ask to use jury trial for special cases where crimes are sufficiently serious,Y
 11,The President is the Head of the Legislature,T,T,,Y
@@ -101,11 +101,11 @@
 100,NCMPs are allowed to vote on all bills,T,T,,Y
 101,Subpoenas are issued to ensure attendance of witnesses at trial,T,T,,Y
 102,"If witnesses do not turn up, their affidavits may still be accepted",F,F,,Y
-103,"The process of a civil trial is as follows: Plaintiff’s witness takes the stand
-Cross-examination
-Defendant’s witness takes the stand
-Cross-examination
-Parties make closing submissions
+103,"The process of a civil trial is as follows: Plaintiff’s witness takes the stand;
+Cross-examination;
+Defendant’s witness takes the stand;
+Cross-examination;
+Parties make closing submissions;
 Judge makes decision",T,T,,Y
 104,Res judicata is when a case can no longer be subject to appeal in the same court or a higher court because final judgment has been passed,T,T,,Y
 105,Laches are when too long a time has passed and it would be unjust to allow the plaintiff’s claim,T,T,,Y
@@ -164,7 +164,7 @@ Judge makes decision",T,T,,Y
 158,The development of the civil law was heavily influenced by Roman Law which was largely developed by practicing lawyers,F,F,,Y
 159,A legal culture is a set of legal rules and procedures,F (that’s system),F,that’s system,Y
 160,Singapore was part of the Straits Colonies,F (SG Penang Malacca – Straits Settlement),F,SG Penang Malacca – Straits Settlement,Y
-161,"The operative phrase of the 2nd Charter of Justice ""Give and pass judgment and sentence according to justice and right"" applied to both civil and criminal cases.",F,F,,Y
+161,"The operative phrase of the 2nd Charter of Justice ""Give and pass judgment and sentence according to justice and right"" applied to both civil and criminal cases.",F (Only civil.),F,Only civil.,Y
 162,"Definition of a legal tradition is that it is an operating set of legal institutions, procedures and rules",F,F,,Y
 163,"Before Singapore’s independence, legislation applying to it was always made in London",F,F,,Y
 164,Systems of Govt based on Westminster model generally have an elected president,F,F,,Y
