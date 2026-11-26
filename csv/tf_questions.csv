@@ -1,0 +1,196 @@
+﻿S/N,Question,Answer + Explanation,T/F,Explanation,Actual T/F Question?
+1,Law Society disciplines both Singapore and Foreign lawyers,T,T,,Y
+2,Legal Profession is regulated by a formal body,T (Law Soc),T,Law Soc,Y
+3,Not all foreign lawyers need to be registered and approved by AG,T,T,,Y
+4,Disciplinary Tribunal consists of both Singaporean and Foreign lawyers,F,F,,Y
+5,Inquiry Committee is appointed by the CJ,T,T,,Y
+6,Jury system was imported via 2nd Charter,T,T,,Y
+7,Singapore abolished jury system in 1970,T (1969 bill),T,1969 bill,Y
+8,There are always 7 jurors,F (6-7),F,6-7,Y
+9,Civil law does not have jury trial,T,T,,Y
+10,Singapore restricted jury trial to only capital offences after 1960,T (yang di-pertuan nagara can ask to use jury trial for special cases where crimes are sufficiently serious),T,yang di-pertuan nagara can ask to use jury trial for special cases where crimes are sufficiently serious,Y
+11,The President is the Head of the Legislature,T,T,,Y
+12,The President is the Head of the Executive,T,T,,Y
+13,Presidential vetoes on Bills with the CPA’s assent can be overruled by a 2/3 Parliamentary vote,T,T,,Y
+14,Presidential vetoes on Bills without the CPA’s assent can be overruled by a ¾ Parliamentary vote,T,T,,Y
+15,The President set up the Presidential Council for Minority Rights,T,T,,Y
+16,The President recommends the CJ for PM’s approval,F (opposite),F,opposite,Y
+17,The President can veto all bills,F (defence/security cannot),F,defence/security cannot,Y
+18,Civil aid is codified,T,T,,Y
+19,Criminal aid is codified,F,F,,Y
+20,Criminal aid for capital punishment is codified,F,F,,Y
+21,The two elements of the legal system are structure and procedure,F (structure and substance),F,structure and substance,Y
+22,Common law is a legal system,F (tradition),F,tradition,Y
+23,Singapore law has adopted multiple legal traditions,"T (common, Islamic (AMLA))",T,"common, Islamic AMLA",Y
+24,Thailand was not colonised,T,T,,Y
+25,Privy Council decisions from other jurisdictions do not bind Singapore Courts,T (Lee Tat Development v MCST Plan No 301 [2018] SGCA 50 at [7]),T,Lee Tat Development v MCST Plan No 301 [2018] SGCA 50 at [7],Y
+26,The political philosophy of rule by law (fa) dominates China,"F (li – reason, opposition to fixed rules – dominates)",F,"li – reason, opposition to fixed rules – dominates",Y
+27,The Second Charter of Justice arrived on 27 Nov 1826 in Singapore,F (20 Mar 1827),F,20 Mar 1827,Y
+28,AELA was passed in 1993,T,T,,Y
+29,AELA repealed s 5 of the Civil Law Act,T,T,,Y
+30,There are 6 seats for NCMPs in Parliament,"F (12. 3 in 1984, 6 in 1997, 9 in 2010, 12 in 2016.)",F,"12. 3 in 1984, 6 in 1997, 9 in 2010, 12 in 2016.",Y
+31,There are 6 seats for NMPs in Parliament,"F (9, since 1997.)",F,"9, since 1997.",Y
+32,Debate occurs during the first reading of the bill,F,F,,Y
+33,Debate occurs during the second reading of the bill,T,T,,Y
+34,Debate can occur during the third reading of the bill,T,T,,Y
+35,"After Parliament passes a bill, the bill becomes law",F (need PCMR and President’s approval),F,need PCMR and President’s approval,Y
+36,"In an emergency, Parliament may bypass the President’s assent",T,T,,Y
+37,Puisne judges of the High Court may sit in the Court of Appeal to judge cases,T,T,,Y
+38,Murder can be tried at the District Court,F,F,,Y
+39,Offences with >10 years imprisonment must be tried at the High Court,T,T,,Y
+40,"Civil claims >$250,000 can be tried at the State Courts",F,F,,Y
+41,Divorce between two Muslims with a foreign marriage certificate may be tried at the Family Justice Courts,F (Syariah Court),F,Syariah Court,Y
+42,Divorce between one Muslim and one non-Muslim may be tried at the Syariah Court,F (Family Justice Courts),F,Family Justice Courts,Y
+43,Judges of the Supreme Court have security of tenure up till 60 years old,F (65),F,65,Y
+44,Senior Counsels must have at least 10 years legal experience,T,T,,Y
+45,"To set up a law firm, one must have at least 3 years of continuous practice experience",T,T,,Y
+46,"To set up a law firm, one must complete a legal practice management course run by Law Society",T,T,,Y
+47,Directors in Limited Liability Corporations are liable for their employees’ professional negligence,F,F,,Y
+48,Limited Liability Partnerships are separate legal entities from their Partners,T,T,,Y
+49,Joint Law Ventures and Formal Law Alliances are the same thing,"F (JLV – new legal entity, FLA – separate legal entities working together)",F,"JLV – new legal entity, FLA – separate legal entities working together",Y
+50,Qualifying Foreign Law Practice licenses allow foreign law firms to practice all areas of Singapore law,F (only in permitted areas of the law),F,only in permitted areas of the law,Y
+51,QFLP was introduced in 2005,F (2008),F,2008,Y
+52,The Raffles Regulations were illegal,T,T,,Y
+53,David Marshall was the first Chief Minister of Singapore,T,T,,Y
+54,David Marshall resigned when full self-governance was not granted by the British,"T (stepped down in 1957, wanted only foreign policy and defence to be left to british)",T,"stepped down in 1957, wanted only foreign policy and defence to be left to british",Y
+55,Singapore became a self-governing state in 1958,T (British passed State of Singapore Act on 1 Aug 1958),T,British passed State of Singapore Act on 1 Aug 1958,Y
+56,Republic of Singapore Independence Act 1965 was the Constitution in 1965,"F (1965-79, 3 documents: Constitution of State of Singapore Act 1963, RSIA 1965, portions of the Malaysian Federal Constitution imported through the RSIA)",F,"1965-79, 3 documents: Constitution of State of Singapore Act 1963, RSIA 1965, portions of the Malaysian Federal Constitution imported through the RSIA",Y
+57,Merger now requires 2/3 majority of Parliament to assent,F (2/3 national referendum),F,2/3 national referendum,Y
+58,The Candidate running for EP can be a past member of a political party,T (but must leave and be non-partisan),T,but must leave and be non-partisan,Y
+59,The Government is empowered to deprive a citizen of Singapore of his citizenship if he applied for a foreign passport,T,T,,Y
+60,The Government is empowered to deprive a citizen of Singapore of his citizenship if he used a foreign passport as a travel document,T,T,,Y
+61,The Government is empowered to deprive a citizen of Singapore of his citizenship if he has been ordinarily resident outside of Singapore for 10 years continuously,T,T,,Y
+62,The Singapore legal system incorporated common law but not equity,F (2nd Charter imported both),F,2nd Charter imported both,Y
+63,Rules of equity trump common law in judgments,T,T,,Y
+64,R v Willans interpreted 2nd COJ to receive all English law up till 1827 subject to suitability and modification,F (1826),F,1826,Y
+65,Singapore lawyers maintain the distinction of solicitors and barristers,F,F,,Y
+66,Originating Summons can be used for questions of fact,F,F,,Y
+67,The Court of Appeal has both original and appellate jurisdiction,F (appellate only),F,appellate only,Y
+68,The High Court has both original and appellate jurisdiction,T,T,,Y
+69,"Between WW2 and 1994, SGCA was bound by its own decisions",T (Mah Kah Yew v PP),T,Mah Kah Yew v PP,Y
+70,The Singapore High Court is bound by its own decisions,F,F,,Y
+71,The Youth Court under the Family Justice Court deals with offences committed by children <14 and young persons <16,T,T,,Y
+72,"The Small Claims Tribunal is limited to money claims not exceeding $30,000","F ($10,000, or $20,000 on both parties’ consent)",F,"$10,000, or $20,000 on both parties’ consent",Y
+73,Issues under the Women’s Charter will be heard before the District Courts,F (Family Justice Court),F,Family Justice Court,Y
+74,"From 1826 to 1868, lawyers were known as law agents and required professional qualifications",F (did not require qualifications),F,did not require qualifications,Y
+75,The Courts Ordinance Amendment in 1927 specified that a person shall not be disqualified by sex,T,T,,Y
+76,"In Singapore, a lawyer’s duty to the court supersedes his duty to the client",T,T,,Y
+77,Foreign lawyers are not allowed to appear in court,"F (only not allowed for constitutional, criminal, and family law)",F,"only not allowed for constitutional, criminal, and family law",Y
+78,"Foreign lawyers are not allowed to practice Singapore constitutional, criminal, and family law",T,T,,Y
+79,The Legal Profession Rules are not binding on lawyers,"F (binding, lawyers can be sanctioned by court of 3 judges)",F,"binding, lawyers can be sanctioned by court of 3 judges",Y
+80,Courts had to concur with the verdict of the jury,"T (if not, can order that the accused be tried again before another jury)",T,"if not, can order that the accused be tried again before another jury",Y
+81,Verdicts of the jury must be unanimous,F (Majority of no less than 5-2),F,Majority of no less than 5-2,Y
+82,Persons over 55 could be part of the jury,F,F,,Y
+83,School teachers were exempted from being part of the jury,T,T,,Y
+84,Veterinary surgeons could be part of the jury,F,F,,Y
+85,Dentists could be part of the jury,F,F,,Y
+86,Originating Summons are cheaper and faster than Writs of Summons because it does not involve pleadings and many interlocutory proceedings,T,T,,Y
+87,Actions commenced by way of Originating Summons cannot be converted into a Writ Action even if there is dispute of fact,F,F,,Y
+88,An action must be commenced within 6 years for contract and tort law,T,T,,Y
+89,An action must be commenced within 3 years for personal injury actions,T,T,,Y
+90,An action to recover land and execute on a judgment must be commenced within 6 years,F (12 years),F,12 years,Y
+91,"In civil actions, the defendant has 8 days after the service of a writ to file a Memorandum of Appearance",T (21 days for out of jurisdiction),T,21 days for out of jurisdiction,Y
+92,"If a defendant fails to enter an appearance or fails to file a defence, the plaintiff may enter default judgment against him",T,T,,Y
+93,The defendant may apply for a summary judgment against the plaintiff if he thinks the plaintiff has no case,F (plaintiff may apply against defendant if it is clear the defendant has no real defence),F,plaintiff may apply against defendant if it is clear the defendant has no real defence,Y
+94,"Pleadings may be struck out by the court if it discloses no reasonable cause of action or defence or is scandalous, frivolous, or vexatious, or tends to prejudice, embarrass, or delay the fair trial of the action",T,T,,Y
+95,Every plaintiff can get the court to enforce an interlocutory injunction against the defendant,"F (must apply when it is appropriate, show that there is a serious question to be tried with a real chance of success, and the balance of convenience lies in favour of granting the injunction)",F,"must apply when it is appropriate, show that there is a serious question to be tried with a real chance of success, and the balance of convenience lies in favour of granting the injunction",Y
+96,A Mareva injunction will prevent defendants from destroying incriminating evidence,F (prevent parties from taking steps to deliberately frustrate orders of court by dissipating assets to avoid the risk of having to satisfy judgments against them),F,prevent parties from taking steps to deliberately frustrate orders of court by dissipating assets to avoid the risk of having to satisfy judgments against them,Y
+97,An Anton Piller Order will prevent defendants from destroying incriminating evidence,T,T,,Y
+98,"During the pre-trial conference, affidavits are filed and exchanged",T,T,,Y
+99,NMPs are allowed to vote on all bills,"F (not for constitutional amendments, motions to remove president, motions of no confidence in govt, supply bills, money bills)",F,"not for constitutional amendments, motions to remove president, motions of no confidence in govt, supply bills, money bills",Y
+100,NCMPs are allowed to vote on all bills,T,T,,Y
+101,Subpoenas are issued to ensure attendance of witnesses at trial,T,T,,Y
+102,"If witnesses do not turn up, their affidavits may still be accepted",F,F,,Y
+103,"The process of a civil trial is as follows: Plaintiff’s witness takes the stand
+Cross-examination
+Defendant’s witness takes the stand
+Cross-examination
+Parties make closing submissions
+Judge makes decision",T,T,,Y
+104,Res judicata is when a case can no longer be subject to appeal in the same court or a higher court because final judgment has been passed,T,T,,Y
+105,Laches are when too long a time has passed and it would be unjust to allow the plaintiff’s claim,T,T,,Y
+106,The High Court does not have revisionary jurisdiction over the State Courts. Only the Court of Appeal does.,F,F,,Y
+107,The defendant must file his defence within 20 days of being served with the Writ of Summons,F (22 days),F,22 days,Y
+108,Appeals can be filed within a year of the judgment,F (14 days),F,14 days,Y
+109,Mediation is adversarial,F,F,,Y
+110,Arbitration is adversarial,T,T,,Y
+111,Transformative mediation refers to allowing the mediator to evaluate the likely outcome and persuade parties to accept compromise solutions,F (that’s evaluative mediation),F,that’s evaluative mediation,Y
+112,Interest-based mediation focuses on empowering parties to resolve the dispute themselves,"F (that’s transformative mediation. Interest-based mediation is to invent options for mutual gain, based on neutrality and objectivity)",F,"that’s transformative mediation. Interest-based mediation is to invent options for mutual gain, based on neutrality and objectivity",Y
+113,The decision in a mediation is binding,F,F,,Y
+114,The Minister of Manpower has the power to direct disputes for arbitration under the Industrial Arbitration Court,T,T,,Y
+115,The President has the power to direct disputes for arbitration under the Industrial Arbitration Court,T,T,,Y
+116,The Primary Dispute Resolution Centre was previously known as the Court Mediation Centre,T,T,,Y
+117,The Primary Dispute Resolution Centre provides a form of court-based mediation known as Concurrent Dispute Resolution,F (Court Dispute Resolution),F,Court Dispute Resolution,Y
+118,The Singapore Government actively encourages mediation,T,T,,Y
+119,Arbitrators are not required to be qualified,T (no special qualifications required – legal or otherwise),T,no special qualifications required – legal or otherwise,Y
+120,Arbitrations are still bound by judicial rules of evidence,F,F,,Y
+121,Med-Arb is currently used by the State Courts in the Primary Dispute Resolution Centre,T,T,,Y
+122,The Singapore Mediation Centre was set up by the Law Society,F (Singapore Academy of Law),F,Singapore Academy of Law,Y
+123,Cause lawyering is prohibited in Singapore,F,F,,Y
+124,There are 3 waves of access to justice,"F (4 – Legal Aid, Public Interest Law, Informal Justice, Competition policy reform of legal service provision)",F,"4 – Legal Aid, Public Interest Law, Informal Justice, Competition policy reform of legal service provision",Y
+125,Adversarial advocacy is completely prohibited in Singapore,F (only the aspect of prioritising duty to client over duty to court is prohibited),F,only the aspect of prioritising duty to client over duty to court is prohibited,Y
+126,Legal Assistance Scheme for Capital Offences is only available to Singaporeans and PRs,F,F,,Y
+127,LASCO has a means test to ensure the scheme is not abused,F,F,,Y
+128,"The Legal Aid Bureau provides legal advice, legal aid for court proceedings, and legal aid for enforcement proceedings",T,T,,Y
+129,"To qualify for LAB’s assistance, there is a means test of <$10,000 annual income and <$10,000 disposable capital",T,T,,Y
+130,"To qualify for CLAS’ assistance, there is a means test of <$10,000 annual income and <$10,000 disposable capital",T,T,,Y
+131,There is a merits test for LAB,T,T,,Y
+132,There is a merits test for CLAS,T,T,,Y
+133,The Minister is allowed to modify the means test for LAB,T,T,,Y
+134,Applicants who provide false estimates when declaring assets for LAB can be liable to a fine or imprisonment,T,T,,Y
+135,Applicants are allowed to appeal to the Minister if they do not pass the merits test,F (no appeals allowed),F,no appeals allowed,Y
+136,The Minister has the power to waive the eligibility tests for LAB if it is in the public interest for aid to be granted,T,T,,Y
+137,CLAS is not State-funded,F,F,,Y
+138,CLAS covers all criminal offences,"F (only selected, and non-capital)",F,"only selected, and non-capital",Y
+139,Municipal legal systems have jurisdiction over multiple States,F (intrastate only),F,intrastate only,Y
+140,The international legal system has a legislature that enacts legislation,F (treaties between countries; all states sovereign and equal),F,treaties between countries; all states sovereign and equal,Y
+141,ASEAN has 10 member states,T,T,,Y
+142,All customary international law is binding on Singapore,F (Singapore courts must recognise it and incorporate it via precedent),F,Singapore courts must recognise it and incorporate it via precedent,Y
+143,Singapore endorsed the adoption of exclusive economic zones (EEZ),F (became one of the leaders of Land Locked and Geographically Disadvantaged States Group to better oppose the EEZ),F,became one of the leaders of Land Locked and Geographically Disadvantaged States Group to better oppose the EEZ,Y
+144,Singapore became part of the UN in 1966,F (21 Sept 1965),F,21 Sept 1965,Y
+145,Singapore is a member of UNESCO,T,T,,Y
+146,Singapore is a member of WHO,T,T,,Y
+147,Singapore is a member of ILO,T,T,,Y
+148,Singapore is a member of IAEA,T,T,,Y
+149,Singapore is a member of ADB,T,T,,Y
+150,Singapore is a member of ASEAN,T,T,,Y
+151,Treaties automatically apply in Singapore after they are signed,F (Parliament needs to enact a law to apply it due to our dualist system),F,Parliament needs to enact a law to apply it due to our dualist system,Y
+152,All foreign law firms need to be registered by the Legal Service Regulatory Authority,T,T,,Y
+153,The review committee (for when lawyers are complained of) consists of one lawyer and one legal officer,T,T,,Y
+154,The inquiry committee (for when lawyers are complained of) consists of one lawyer and one legal officer,"F (two lawyers, one judicial official, one lay person",F,"two lawyers, one judicial official, one lay person",Y
+155,There are 2 charters of justice.,F (There are 3.),F,There are 3.,Y
+156,The Central feature of the civil law system is 1.Development of an authoritative written code; and 2. The establishment of a central code,T,T,,Y
+157,All legal systems are either based on common law or civil law,F,F,,Y
+158,The development of the civil law was heavily influenced by Roman Law which was largely developed by practicing lawyers,F,F,,Y
+159,A legal culture is a set of legal rules and procedures,F (that’s system),F,that’s system,Y
+160,Singapore was part of the Straits Colonies,F (SG Penang Malacca – Straits Settlement),F,SG Penang Malacca – Straits Settlement,Y
+161,"The operative phrase of the 2nd CJ ""Give and pass judgment and sentence according to justice and right"" applied to both civil and criminal cases.",F,F,,Y
+162,"Definition of a legal tradition is that it is an operating set of legal institutions, procedures and rules",F,F,,Y
+163,"Before Singapore’s independence, legislation applying to it was always made in London",F,F,,Y
+164,Systems of Govt based on Westminster model generally have an elected president,F,F,,Y
+165,Singapore has a bicameral legislature,F,F,,Y
+166,Legislation must be considered by the PCMR. If the council does not say anything within 30 days then it is automatically rejected.,F (auto accepted),F,auto accepted,Y
+167,"In Singapore, the PM must be a member of the Legislature",T,T,,Y
+168,The 2nd COJ gave the courts the power of superior courts of law but not equity at Westminster,F (equity too),F,equity too,Y
+169,All of Singapore’s Supreme Court judges have security of tenure,"F (supernumerary judges, judicial commissioners)",F,"supernumerary judges, judicial commissioners",Y
+170,Law agents in SG were disciplined by a professional organisation,F,F,,Y
+171,The current version of the LP(PC)R 2015 makes many but not all rules applicable to both SG and foreign lawyers,T – not all rules apply to foreign lawyers,T,– not all rules apply to foreign lawyers,Y
+172,Foreign lawyers were previously under the supervision of the AG but now fall within the disciplinary process managed by the Law Society,T,T,,Y
+173,The police has the legal power to formally charge a subject,F – recommend charge only. AG charges formally,F,– recommend charge only. AG charges formally,Y
+174,Private individuals may make an arrest,T (trespass etc),T,trespass etc,Y
+175,A criminal lawyer does not violate any duties when he hides evidence from the courts in the best interests of his client.,F,F,,Y
+176,An application for security for costs is a type of enforcement proceedings,F,F,,Y
+177,"Claims up to $80,000 in value can be heard by the magistrates court","F ($60,000 only. DC 250k)",F,"$60,000 only. DC 250k",Y
+178,One difference between criminal and chief trials is the form in which evidence in chief is delivered,T,T,,Y
+179,"In the criminal trial, the burden of proof for the defence is ‘beyond a reasonable doubt’",F – cast doubt. Balance of probabilities?,F,– cast doubt. Balance of probabilities?,Y
+180,Arbitration and mediation are both confidential processes,T,T,,Y
+181,The mediator in mediation proceedings is usually the lawyer of one of the parties in the dispute.,F (neutral 3P),F,neutral 3P,Y
+182,The Evidence Act can apply to arbitration proceedings if the parties agree that it should be applied,T,T,,Y
+183,Adversarial advocacy and ethics of care lawyering orientation both prioritise duty to the court over duty to the client in cases where they conflict,F (adversarial doesn’t),F,adversarial doesn’t,Y
+184,The prohibition against the death penalty is a norm of customary international law,F,F,,Y
+185,"The operative words of the 2nd CJ were ""Give and pass judgment and sentence according to justice and right"".",T,T,,Y
+186,An example of a supra-national Legal System is the EU (international law).,T,T,,Y
+187,High Court and SGCA follow horizontal stare decisis.,F,F,,Y
+188,The small claims tribunal fall under the SG High Court.,F (State Courts),F,State Courts,Y
+189,The State Courts were previously called the District Courts.,F (Subordinate Courts),F,Subordinate Courts,Y
+190,An interlocutory injunction is filed to stop unnecessary litigation.,"F (While the case is going on, an injunction is filed to stop the Dft from doing something which may cause more harm.)",F,"While the case is going on, an injunction is filed to stop the Dft from doing something which may cause more harm.",Y
