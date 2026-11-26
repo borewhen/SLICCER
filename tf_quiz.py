@@ -31,10 +31,8 @@ WELLDONE_IMAGE = "img/kevproud.png"
 
 CSV_PATH = Path(__file__).resolve().parent / "csv" / "tf_questions.csv"
 
-# Soft washes, so the default dark text stays readable.
-COLOUR_CORRECT = "#98AF62"
-COLOUR_INCORRECT = "#C87A61"
-
+COLOUR_CORRECT = "#4C5D24"
+COLOUR_INCORRECT = "#621E1A"
 
 def load_bank(path: Path) -> list[dict]:
     """Read statements that actually have a T or F verdict."""
@@ -148,7 +146,7 @@ def render_setup(total: int) -> None:
 
     short, whole = st.columns(2)
     with short:
-        if st.button("Start", type="primary", use_container_width=True):
+        if st.button("Start", use_container_width=True):
             fresh_sitting(st.session_state.bank, int(count))
             st.rerun()
     with whole:
@@ -173,7 +171,7 @@ def render_question() -> None:
 
     true_col, false_col = st.columns(2)
     with true_col:
-        if st.button("True", type="primary", use_container_width=True):
+        if st.button("True", use_container_width=True):
             record_answer(True)
             st.rerun()
     with false_col:
@@ -212,7 +210,7 @@ def render_feedback() -> None:
 
     last = st.session_state.index + 1 >= len(deck)
     label = "See the score" if last else "Next question"
-    if st.button(label, type="primary"):
+    if st.button(label):
         advance()
         st.rerun()
 
@@ -238,14 +236,14 @@ def render_results() -> None:
     )
     st.write(f"{percent} percent correct.")
 
-    if st.button("Try again", type="primary"):
+    if st.button("Try again"):
         st.session_state.phase = "setup"
         st.rerun()
 
 
 def main() -> None:
-    st.set_page_config(page_title="True or false", page_icon="§", layout="centered")
-
+    st.set_page_config(page_title="Plate-SLICcers", page_icon="§", layout="centered")
+    
     if "bank" not in st.session_state:
         st.session_state.bank = load_bank(CSV_PATH)
         st.session_state.phase = "setup"
