@@ -32,8 +32,8 @@ WELLDONE_IMAGE = "img/kevproud.png"
 CSV_PATH = Path(__file__).resolve().parent / "csv" / "tf_questions.csv"
 
 # Soft washes, so the default dark text stays readable.
-COLOUR_CORRECT = "#b7e4c7"
-COLOUR_INCORRECT = "#f4b6b6"
+COLOUR_CORRECT = "#98AF62"
+COLOUR_INCORRECT = "#C87A61"
 
 
 def load_bank(path: Path) -> list[dict]:
