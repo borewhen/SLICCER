@@ -323,7 +323,7 @@ def render_setup(total: int) -> None:
     with tab_fc:
         render_fc_setup()
     with tab_allqns:
-        st.header("To be added...")
+        render_mixed_setup()
 
 
 def toggle_all_chapters(chapter_numbers: list[int]) -> None:
@@ -446,6 +446,40 @@ def render_fc_setup() -> None:
 
     if total == 0:
         st.caption("Select at least one chapter to begin.")
+
+
+def render_mixed_setup() -> None:
+    """Configure a sitting containing both question types."""
+    tf_bank = st.session_state.bank
+    fc_bank = st.session_state.fc_bank
+
+    combined_bank = tf_bank + fc_bank
+    total = len(combined_bank)
+
+    st.markdown(
+        "<p style='font-size:0.9rem;'>"
+        "All the chapters will be included."
+        "</p>",
+        unsafe_allow_html=True,
+    )
+
+    count = st.number_input(
+        f"How many questions do we wanna try? "
+        f"We have {total} questions in the combined bank.",
+        min_value=1,
+        max_value=total,
+        value=min(10, total),
+        step=1,
+        key="mixed_count",
+    )
+
+    if st.button(
+        "Start",
+        key="mixed_start",
+        use_container_width=True,
+    ):
+        fresh_sitting(combined_bank, int(count))
+        st.rerun()
 
 
 def render_tf_question(card: dict) -> None:
