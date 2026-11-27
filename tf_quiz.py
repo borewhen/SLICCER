@@ -26,9 +26,11 @@ from streamlit_theme import st_theme
 # Drop a file path or a URL into any of these. Empty means no picture.
 CORRECT_IMAGE = "img/kevsmile.png"
 INCORRECT_IMAGE = "img/sadcat.jpeg"
+SON_IMAGE = "img/menon_son.png"
 FAIL_IMAGE = "img/kena.jpeg"
 PASS_IMAGE = "img/kevsmile.png"
 WELLDONE_IMAGE = "img/kevproud.png"
+SUPER_IMAGE = "img/manifest.jpeg"
 
 TF_CSV_PATH = Path(__file__).resolve().parent / "csv" / "tf_questions.csv"
 FC_CSV_PATH = Path(__file__).resolve().parent / "csv" / "flashcards.csv"
@@ -139,8 +141,75 @@ def fetch_theme() -> None:
         st.session_state.theme_base = theme["base"]
 
 
+def style_buttons() -> None:
+    """Apply consistent, theme-aware button styling."""
+    base = st.session_state.get("theme_base", "light")
+
+    if base == "dark":
+        button = "#262730"
+        hover = "#383B46"
+        text = "#FAFAFA"
+    else:
+        button = "#F0F2F6"
+        hover = "#DFE3EB"
+        text = "#262730"
+
+    st.markdown(
+        f"""
+        <style>
+        .stButton button:not(:disabled) {{
+            background-color: {button};
+            color: {text};
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.15s ease,
+                        transform 0.15s ease;
+        }}
+
+        .stButton button:not(:disabled) p {{
+            color: {text};
+            font-weight: 600;
+        }}
+
+        .stButton button:not(:disabled):hover {{
+            background-color: {hover};
+            color: {text};
+            border-color: transparent;
+            transform: translateY(-2px);
+        }}
+
+        .stButton button:not(:disabled):active {{
+            background-color: {hover};
+            color: {text};
+            border-color: transparent;
+            transform: translateY(0);
+        }}
+
+        .stButton button:focus:not(:focus-visible) {{
+            box-shadow: none;
+            color: {text};
+        }}
+
+        .stButton button:focus-visible {{
+            outline: 2px solid {text};
+            outline-offset: 3px;
+            box-shadow: none;
+        }}
+
+        .stButton button:disabled {{
+            opacity: 0.45;
+            transform: none;
+            cursor: not-allowed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def paint(right: bool) -> None:
-    """Apply the feedback background and button styling."""
+    """Apply feedback-specific background and button colours."""
     base = st.session_state.get("theme_base", "light")
     palette = COLOURS[base]
     verdict = "correct" if right else "incorrect"
@@ -159,34 +228,19 @@ def paint(right: bool) -> None:
             background-color: {colour};
         }}
 
-        .stButton button {{
-            background-color: {button};
+        .stButton button:not(:disabled) {{
+            background-color: {button} !important;
             color: {text};
-            border: 1px solid transparent;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: background-color 0.15s ease,
-                        transform 0.15s ease;
         }}
 
         .stButton button p {{
             color: {text};
         }}
 
-        .stButton button:hover {{
-            background-color: {hover};
+        .stButton button:not(:disabled):hover {{
+            background-color: {hover} !important;
             color: {text};
             border-color: transparent;
-            transform: translateY(-2px);
-        }}
-
-        .stButton button:active {{
-            transform: translateY(0);
-        }}
-
-        .stButton button:focus-visible {{
-            outline: 2px solid {text};
-            outline-offset: 3px;
         }}
         </style>
         """,
@@ -520,15 +574,21 @@ def render_results() -> None:
     score = st.session_state.correct
     percent = round(100 * score / total) if total else 0
 
-    if percent >= 90:
+    if percent >= 85:
+        show_image(SUPER_IMAGE)
+        st.title("You got that dog in you.")
+    elif percent >= 75:
         show_image(WELLDONE_IMAGE)
-        st.title("Kevin is proud!!!")
+        st.title("Kevin is proud!")
     elif percent >= 60:
         show_image(PASS_IMAGE)
         st.title("Passed. Goodbye Kevin!")
-    else:
+    elif percent >= 30:
         show_image(FAIL_IMAGE)
         st.title("Kevin will see you next semester...")
+    else:
+        show_image(SON_IMAGE)
+        st.title("Cooked...")
     st.markdown(
         f"<p style='font-size:2rem; margin-bottom:0.2rem;'>"
         f"{score} / {total}</p>",
@@ -549,6 +609,7 @@ def main() -> None:
     )
 
     fetch_theme()
+    style_buttons()
 
     if "bank" not in st.session_state:
         st.session_state.bank = load_bank(TF_CSV_PATH)
