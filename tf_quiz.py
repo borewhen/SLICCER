@@ -30,7 +30,8 @@ FAIL_IMAGE = "img/kena.jpeg"
 PASS_IMAGE = "img/kevsmile.png"
 WELLDONE_IMAGE = "img/kevproud.png"
 
-CSV_PATH = Path(__file__).resolve().parent / "csv" / "tf_questions.csv"
+TF_CSV_PATH = Path(__file__).resolve().parent / "csv" / "tf_questions.csv"
+FC_CSV_PATH = Path(__file__).resolve().parent / "csv" / "flashcards.csv"
 
 COLOURS = {
     "light": {
@@ -53,6 +54,7 @@ COLOURS = {
     },
 }
 
+
 def load_bank(path: Path) -> list[dict]:
     """Read statements that actually have a T or F verdict."""
     bank: list[dict] = []
@@ -65,6 +67,7 @@ def load_bank(path: Path) -> list[dict]:
                 continue
             bank.append(
                 {
+                    "type": "tf",
                     "number": (row.get("S/N") or "").strip(),
                     "question": question,
                     "answer": verdict == "T",
@@ -73,6 +76,40 @@ def load_bank(path: Path) -> list[dict]:
             )
     if not bank:
         raise SystemExit(f"No true/false questions found in {path}")
+    return bank
+
+
+def load_flashcards(path: Path) -> list[dict]:
+    """Read and validate flashcards from the CSV."""
+    bank: list[dict] = []
+
+    with path.open(newline="", encoding="utf-8-sig") as handle:
+        for row in csv.DictReader(handle):
+            chapter = (row.get("chap") or "").strip()
+            front = (row.get("Front") or "").strip()
+            back = (row.get("Back") or "").strip()
+
+            try:
+                chap_no = int(row.get("chap_no") or "")
+            except ValueError:
+                continue
+
+            if not chapter or not front or not back:
+                continue
+
+            bank.append(
+                {
+                    "type": "fc",
+                    "chap_no": chap_no,
+                    "chap": chapter,
+                    "question": front,
+                    "answer": back,
+                }
+            )
+
+    if not bank:
+        raise ValueError(f"No valid flashcards found in {path}")
+
     return bank
 
 
@@ -93,12 +130,14 @@ def show_image(reference: str) -> None:
     if path.is_file():
         st.image(str(path), width=200)
 
+
 def fetch_theme() -> None:
     """Retrieve and store the current browser theme."""
     theme = st_theme(key="quiz_theme")
 
     if theme and theme.get("base") in COLOURS:
         st.session_state.theme_base = theme["base"]
+
 
 def paint(right: bool) -> None:
     """Apply the feedback background and button styling."""
@@ -166,12 +205,27 @@ def fresh_sitting(bank: list[dict], count: int) -> None:
 
 
 def record_answer(choice: bool) -> None:
-    """Score the current statement once, then move to the coloured page."""
+    """Evaluate an answer or record a self-assessment."""
+    if st.session_state.phase != "question":
+        return
+
     card = st.session_state.deck[st.session_state.index]
+
+    if card["type"] == "tf":
+        right = choice == card["answer"]
+
+    elif card["type"] == "fc":
+        right = choice
+
+    else:
+        raise ValueError(f"Unknown question type: {card['type']}")
+
     st.session_state.last_choice = choice
-    st.session_state.last_right = choice == card["answer"]
-    if st.session_state.last_right:
+    st.session_state.last_right = right
+
+    if right:
         st.session_state.correct += 1
+
     st.session_state.phase = "feedback"
 
 
@@ -192,27 +246,190 @@ def render_setup(total: int) -> None:
     )
     st.image("img/beggars.png", width=200)
 
+    tab_tf, tab_fc, tab_allqns = st.tabs(["True/False", "Flashcards", "...or both?"])
+
+    with tab_tf:
+        count = st.number_input(
+            "How many questions do we wanna try? We have 190 true/false questions in the bank.",
+            min_value=1,
+            max_value=total,
+            value=min(10, total),
+            step=1,
+        )
+
+        short, whole = st.columns(2)
+        with short:
+            if st.button("Start", use_container_width=True):
+                fresh_sitting(st.session_state.bank, int(count))
+                st.rerun()
+        with whole:
+            if st.button("Take the whole quiz", use_container_width=True):
+                fresh_sitting(st.session_state.bank, total)
+                st.rerun()
+    with tab_fc:
+        render_fc_setup()
+    with tab_allqns:
+        st.header("An owl")
+
+
+def toggle_all_chapters(chapter_numbers: list[int]) -> None:
+    """Synchronise all chapter checkboxes with Select all."""
+    selected = st.session_state.fc_select_all
+
+    for number in chapter_numbers:
+        st.session_state[f"fc_chapter_{number}"] = selected
+
+
+def sync_chapter_selection(chapter_numbers: list[int]) -> None:
+    """Update Select all when individual chapters are toggled."""
+    st.session_state.fc_select_all = all(
+        st.session_state.get(f"fc_chapter_{number}", False)
+        for number in chapter_numbers
+    )
+
+
+def render_fc_setup() -> None:
+    """Configure a flashcard sitting by chapter and question count."""
+    bank = st.session_state.fc_bank
+
+    chapters = {
+        card["chap_no"]: card["chap"]
+        for card in bank
+    }
+
+    chapter_numbers = sorted(chapters)
+
+    chapter_counts = {
+        number: 0 for number in chapter_numbers
+    }
+
+    for card in bank:
+        chapter_counts[card["chap_no"]] += 1
+
+    st.subheader("Which chapters do we wanna revise?")
+
+    st.checkbox(
+        "Select all chapters",
+        key="fc_select_all",
+        on_change=toggle_all_chapters,
+        args=(chapter_numbers,),
+    )
+
+    st.divider()
+
+    # Render chapters in numerical order.
+    selected = []
+
+    for number in chapter_numbers:
+        label = (
+            f"{number}. {chapters[number]} "
+            f"({chapter_counts[number]} cards)"
+        )
+
+        if st.checkbox(
+            label,
+            key=f"fc_chapter_{number}",
+            on_change=sync_chapter_selection,
+            args=(chapter_numbers,),
+        ):
+            selected.append(number)
+
+    # Construct the bank from selected chapters.
+    selected_bank = [
+        card for card in bank
+        if card["chap_no"] in selected
+    ]
+
+    total = len(selected_bank)
+
+    st.caption(
+        f"{len(selected)} of {len(chapter_numbers)} chapters "
+        f"selected · {total} flashcards available"
+    )
+
+    st.divider()
+
+    # Preserve the requested count where possible,
+    # but ensure it never exceeds the available cards.
+    if "fc_count" not in st.session_state:
+        st.session_state.fc_count = min(10, max(1, total))
+
+    st.session_state.fc_count = max(
+        1,
+        min(st.session_state.fc_count, max(1, total)),
+    )
+
     count = st.number_input(
-        "How many questions do we wanna try? We have 190 true/false questions in the bank.",
+        "How many flashcards do we wanna try?",
         min_value=1,
-        max_value=total,
-        value=min(10, total),
+        max_value=max(1, total),
         step=1,
+        key="fc_count",
+        disabled=total == 0,
     )
 
     short, whole = st.columns(2)
+
     with short:
-        if st.button("Start", use_container_width=True):
-            fresh_sitting(st.session_state.bank, int(count))
+        if st.button(
+            "Start",
+            key="fc_start",
+            use_container_width=True,
+            disabled=total == 0,
+        ):
+            fresh_sitting(selected_bank, int(count))
             st.rerun()
+
     with whole:
-        if st.button("Take the whole quiz", use_container_width=True):
-            fresh_sitting(st.session_state.bank, total)
+        if st.button(
+            "Take all selected cards",
+            key="fc_whole",
+            use_container_width=True,
+            disabled=total == 0,
+        ):
+            fresh_sitting(selected_bank, total)
+            st.rerun()
+
+    if total == 0:
+        st.caption("Select at least one chapter to begin.")
+
+
+def render_tf_question(card: dict) -> None:
+    """Render the controls for a true/false question."""
+    true_col, false_col = st.columns(2)
+
+    with true_col:
+        if st.button("True", use_container_width=True):
+            record_answer(True)
+            st.rerun()
+
+    with false_col:
+        if st.button("False", use_container_width=True):
+            record_answer(False)
+            st.rerun()
+
+def render_fc_question(card: dict) -> None:
+    """Reveal the answer and collect a self-assessment."""
+    with st.expander("Reveal answer", expanded=False):
+        st.markdown(card["answer"])
+
+    st.write("Have you gotten this down?")
+
+    yes_col, no_col = st.columns(2)
+
+    with yes_col:
+        if st.button("Yes", use_container_width=True):
+            record_answer(True)
+            st.rerun()
+
+    with no_col:
+        if st.button("No", use_container_width=True):
+            record_answer(False)
             st.rerun()
 
 
 def render_question() -> None:
-    # fetch_theme()
+    """Render the current question, regardless of its type."""
     deck = st.session_state.deck
     index = st.session_state.index
     card = deck[index]
@@ -220,23 +437,27 @@ def render_question() -> None:
 
     st.progress(index / total)
     st.caption(f"Question {index + 1} of {total}")
+
+    if card["type"] == "fc":
+        st.caption(
+            f"Chapter {card['chap_no']} — {card['chap']}"
+        )
+
     st.markdown(
-        f"<p style='font-size:1.4rem; line-height:1.45; margin-top:0.6rem;'>"
+        f"<p style='font-size:1.4rem; "
+        f"line-height:1.45; margin-top:0.6rem;'>"
         f"{html.escape(card['question'])}</p>",
         unsafe_allow_html=True,
     )
 
-    true_col, false_col = st.columns(2)
-    with true_col:
-        if st.button("True", use_container_width=True):
-            record_answer(True)
-            st.rerun()
-    with false_col:
-        if st.button("False", use_container_width=True):
-            record_answer(False)
-            st.rerun()
+    if card["type"] == "tf":
+        render_tf_question(card)
+
+    elif card["type"] == "fc":
+        render_fc_question(card)
 
     st.divider()
+
     if st.button("Start over"):
         st.session_state.phase = "setup"
         st.rerun()
@@ -246,27 +467,49 @@ def render_feedback() -> None:
     deck = st.session_state.deck
     card = deck[st.session_state.index]
     right = st.session_state.last_right
-    said = "True" if st.session_state.last_choice else "False"
-    answer = "True" if card["answer"] else "False"
 
     paint(right)
 
-    st.title("Correct." if right else "Wrong.")
+    if card["type"] == "tf":
+        st.title("Correct." if right else "Wrong.")
+
+    elif card["type"] == "fc":
+        st.title(
+            "Got it down." if right else "Keep practising."
+        )
+
+        st.caption(
+            f"Chapter {card['chap_no']} — {card['chap']}"
+        )
+
     st.markdown(
         f"<p style='font-size:1.15rem; line-height:1.45;'>"
         f"{html.escape(card['question'])}</p>",
         unsafe_allow_html=True,
     )
-    st.write(f"You said **{said}**. The statement is **{answer}**.")
 
-    # Plenty of rows have a verdict and no extra note. Show the note
-    # whenever the sheet actually has one.
-    if card["explanation"]:
-        st.markdown("**Explanation**")
-        st.write(card["explanation"])
+    if card["type"] == "tf":
+        said = (
+            "True" if st.session_state.last_choice else "False"
+        )
+        answer = "True" if card["answer"] else "False"
+
+        st.write(
+            f"You said **{said}**. "
+            f"The statement is **{answer}**."
+        )
+
+        if card["explanation"]:
+            st.markdown("**Explanation**")
+            st.write(card["explanation"])
+
+    elif card["type"] == "fc":
+        st.markdown("**Answer**")
+        st.markdown(card["answer"])
 
     last = st.session_state.index + 1 >= len(deck)
     label = "See the score" if last else "Next question"
+
     if st.button(label):
         advance()
         st.rerun()
@@ -299,21 +542,32 @@ def render_results() -> None:
 
 
 def main() -> None:
-    st.set_page_config(page_title="Plate-SLICcers", page_icon="§", layout="centered")
-    
+    st.set_page_config(
+        page_title="Plate-SLICcers",
+        page_icon="§",
+        layout="centered",
+    )
+
     fetch_theme()
 
     if "bank" not in st.session_state:
-        st.session_state.bank = load_bank(CSV_PATH)
+        st.session_state.bank = load_bank(TF_CSV_PATH)
         st.session_state.phase = "setup"
 
+    if "fc_bank" not in st.session_state:
+        st.session_state.fc_bank = load_flashcards(FC_CSV_PATH)
+
     phase = st.session_state.phase
+
     if phase == "setup":
         render_setup(len(st.session_state.bank))
+
     elif phase == "question":
         render_question()
+
     elif phase == "feedback":
         render_feedback()
+
     else:
         render_results()
 
