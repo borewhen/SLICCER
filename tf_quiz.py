@@ -323,7 +323,7 @@ def render_setup(total: int) -> None:
     with tab_fc:
         render_fc_setup()
     with tab_allqns:
-        st.header("An owl")
+        st.header("To be added...")
 
 
 def toggle_all_chapters(chapter_numbers: list[int]) -> None:
@@ -529,7 +529,7 @@ def render_feedback() -> None:
 
     elif card["type"] == "fc":
         st.title(
-            "Got it down." if right else "Keep practising."
+            "Got it down." if right else "Rabak. We'll get 'em next time."
         )
 
         st.caption(
