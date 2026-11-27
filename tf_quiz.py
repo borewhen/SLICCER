@@ -31,6 +31,13 @@ FAIL_IMAGE = "img/kena.jpeg"
 PASS_IMAGE = "img/kevsmile.png"
 WELLDONE_IMAGE = "img/kevproud.png"
 SUPER_IMAGE = "img/manifest.jpeg"
+SON_SOUND = "sound/spongebob_cooked.mp3"
+FAIL_SOUND = "sound/spongebob_clown.mp3"
+PASS_SOUND = "sound/majulah.mp3"
+WELLDONE_SOUND = "sound/majulah.mp3"
+SUPER_SOUND = "sound/kanye.mp3"
+
+
 
 TF_CSV_PATH = Path(__file__).resolve().parent / "csv" / "tf_questions.csv"
 FC_CSV_PATH = Path(__file__).resolve().parent / "csv" / "flashcards.csv"
@@ -131,6 +138,36 @@ def show_image(reference: str) -> None:
         path = Path(__file__).resolve().parent / path
     if path.is_file():
         st.image(str(path), width=200)
+
+
+def play_sound(reference: str) -> None:
+    """Play the soundtrack associated with a quiz result."""
+    reference = (reference or "").strip()
+
+    if not reference:
+        return
+
+    if "://" in reference:
+        st.audio(
+            reference,
+            format="audio/mpeg",
+            autoplay=True,
+            loop=False,
+        )
+        return
+
+    path = Path(reference)
+
+    if not path.is_absolute():
+        path = Path(__file__).resolve().parent / path
+
+    if path.is_file():
+        st.audio(
+            str(path),
+            format="audio/mpeg",
+            autoplay=True,
+            loop=False,
+        )
 
 
 def fetch_theme() -> None:
@@ -611,24 +648,30 @@ def render_results() -> None:
     if percent >= 85:
         show_image(SUPER_IMAGE)
         st.title("You got that dog in you.")
+        sound = SUPER_SOUND
     elif percent >= 75:
         show_image(WELLDONE_IMAGE)
         st.title("Kevin is proud!")
+        sound = WELLDONE_SOUND
     elif percent >= 60:
         show_image(PASS_IMAGE)
         st.title("Passed. Goodbye Kevin!")
+        sound = PASS_SOUND
     elif percent >= 30:
         show_image(FAIL_IMAGE)
         st.title("Kevin will see you next semester...")
+        sound = FAIL_SOUND
     else:
         show_image(SON_IMAGE)
         st.title("Cooked...")
+        sound = SON_SOUND
     st.markdown(
         f"<p style='font-size:2rem; margin-bottom:0.2rem;'>"
         f"{score} / {total}</p>",
         unsafe_allow_html=True,
     )
     st.write(f"{percent} percent correct.")
+    # play_sound(sound)
 
     if st.button("Try again"):
         st.session_state.phase = "setup"
